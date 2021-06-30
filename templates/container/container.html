@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Контейнеры</title>
+</head>
+<body>
+    <div class="head">
+        <a class="head_left" href="#">Sanrijapan.com</a>
+        <a class="head_right" href="#">Admin</a>
+    </div>
+    <div class="nav" id="nav">
+        <div><img onclick="nav_burger()" class="burger" id="burger" src="../../icons/bars-solid.svg"></div>
+        <a class="nav_item  " href="../common_base/index.html"><img class="nav_item_icon" src="../../icons/database-solid.svg"><span >Общая база</span></a>
+        <a class="nav_item" href="../client/client.html"><img class="nav_item_icon" src="../../icons/user-solid.svg"><span>Клиенты</span></a>
+        <a class="nav_item _active" href="container.html"><img class="nav_item_icon" src="../../icons/crane.svg"><span class="left_active">Контейнеры</span></a>
+        <a class="nav_item" href="../shop/shop.html"><img class="nav_item_icon" src="../../icons/worldwide-shipping.svg"><span>Магазин</span></a>
+        <a class="nav_item" href="../auction/auction.html"><img class="nav_item_icon" src="../../icons/auction.svg"><span>Аукционы</span></a>
+        <a class="nav_item" href="../car/car.html"><img class="nav_item_icon" src="../../icons/car.svg"><span>Машины</span></a>
+        <a class="nav_item" href="../income/income.html"><img class="nav_item_icon" src="../../icons/money-bag-with-dollar-symbol.svg"><span >Доходы</span></a>
+        <a class="nav_item" href="../monthly_payment/monthlyPayment.html"><img class="nav_item_icon" src="../../icons/eje_oplat.svg"><span >Ежемесячные оплаты</span></a>
+        <a class="nav_item" href="#"><img class="nav_item_icon" src="../../icons/icon_n1.svg"><span >Зарплата сотрудников</span></a>
+        <a class="nav_item" href="../employee/employee.html"><img class="nav_item_icon" src="../../icons/icon_n2.svg"><span >Сотрудники</span></a>
+        <a class="nav_item" href="../manager/manager.html"><img class="nav_item_icon" src="../../icons/light-bulb.svg"><span class="">Менеджеры</span></a>
+        <a class="nav_item" href="#"><img class="nav_item_icon" src="../../icons/trend.svg"><span>Статистика</span></a>
+    </div>
+    <br>
+    <div id="main_container" class="main_container">
+        <br>
+        <div class="main">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4 class="head_text_1 left_active">Контейнеры:</h4>
+                    <ul class="head_text_ul_1">
+                        <li><a href="containerCollect.html">Собирать новый</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="main_content">
+                <form action="#" method="#" >
+                    <input class="input_search" type="text" placeholder="Поиск на странице">
+                    <input class="btn btn-primary input_search_button" value="Поиск" type="submit">
+                </form>
+                
+                <div class="scroll">
+                    <table class="table  table-hover">
+                        <p class="ml-5">Клиенты работающие по факту</p>
+                        <thead>
+                            <tr>
+                                <th>Клиент</th>
+                                <th>Название контейнера</th>
+                                <th>Дата отправки</th>
+                                <th>Кол. машин /Сумма</th>
+                                <th>Комиссия за контейнер</th>
+                                <th>Перевозка контейнера</th>
+                                <th>Упаковочные материалы</th>
+                                <th>Утилизация колес</th>
+                                <th>Продажа колес</th>
+                                <th>10% от цены </th>
+                                <th>Итоговая сумма</th>
+                            </tr>
+                        </thead>
+                        <tbody id="addTable">
+                            
+                            
+                            
+                        </tbody>
+                    </table>
+                </div>
+               
+                
+                <div class="scroll">
+                    <table class="table  table-hover">
+                        <p class="ml-5">Клиенты работающие по FOB</p>
+                        <thead>
+                            <tr>
+                                <th>Клиент</th>
+                                <th>Название контейнера</th>
+                                <th>Дата отправки</th>
+                                <th>Кол. машин /Total FOB</th>
+                                <th>Погрузка</th>
+                                <th>Перевозка контейнера</th>
+                                <th>Auction fees /Transport</th>
+                                <th>10% / Recycle /+Amount / FOB</th>
+                                <th>Прибыль от контейнера</th>
+                                <th>Итоговая сумма</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <tr>
+                                <td class="align-middle">Бек KZ</td>
+                                <td class="align-middle">№1 TUBD 4677398364989</td>
+                                <td class="align-middle">21.03.2021</td>
+                                <td class="align-middle">35/5,230,000</td>
+                                <td class="align-middle">150,000</td>
+                                <td class="align-middle">143,000</td>
+                                <td class="align-middle">45,000</td>
+                                <td class="align-middle">5/5000</td>
+                                <td class="align-middle">85/85000</td>
+                                <td class="align-middle">8,935,000</td>
+                            </tr>
+                            <tr>
+                                <td class="align-middle">Бек KZ</td>
+                                <td class="align-middle">№2 TUBD 4677398364989</td>
+                                <td class="align-middle">21.03.2021</td>
+                                <td class="align-middle">35/5,230,000</td>
+                                <td class="align-middle">150,000</td>
+                                <td class="align-middle">143,000</td>
+                                <td class="align-middle">45,000</td>
+                                <td class="align-middle">5/5000</td>
+                                <td class="align-middle">85/85000</td>
+                                <td class="align-middle">8,935,000</td>
+                            </tr> -->
+                            
+                        </tbody>
+                    </table>
+                </div><br>
+            </div>
+        </div>
+    </div>
+<script src="../../js/index.js"></script>
+<script src="../../js/url.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        addTable = document.getElementById('addTable');
+
+        var modal = document.getElementById("add_modal");
+        var inputAdd = document.getElementById("addInput");
+
+        $.ajax({
+            type: "GET",
+            data: {},
+            url: httpBaseUrl + "/api/Container",
+            success: function (response) {
+                console.log('Submission was successful.');
+                lenghtContainer = response.length;
+                response.forEach(function(element, index){
+                    addTable.innerHTML +=
+                        '<tr>'+
+                            '<td class="align-middle">'+element.client+'</td>'+
+                            '<td class="align-middle">'+element.name+'</td>'+
+                            '<td class="align-middle">'+element.dateOfSending+'</td>'+
+                            '<td class="align-middle">'+ +'</td>'+
+                            '<td class="align-middle">'+element.commission+'</td>'+
+                            '<td class="align-middle">'+element.containerTransportation+'</td>'+
+                            '<td class="align-middle">'+element.packagingMaterials+'</td>'+
+                            '<td class="align-middle">'+element.wheelRecycling+'</td>'+
+                            '<td class="align-middle">'+element.wheelSales+'</td>'+
+                            '<td class="align-middle">'+(element.totalAmount*90/100)+'</td>'+
+                            '<td class="align-middle">'+element.totalAmount+'</td>'+
+                        '</tr>';
+                }); 
+            },
+            error: function (data) {
+                console.log('An error occurred.');
+                console.log(data);
+            },
+        });
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Клиент4</title>
+</head>
+<body>
+    <div class="head">
+        <a class="head_left" href="#">Sanrijapan.com</a>
+        <a class="head_right" href="#">Admin</a>
+    </div>
+    <div class="nav" id="nav">
+        <div><img onclick="nav_burger()" class="burger" id="burger" src="../../icons/bars-solid.svg"></div>
+        <a class="nav_item" href="../common_base/index.html"><img class="nav_item_icon" src="../../icons/database-solid.svg"><span >Общая база</span></a>
+        <a class="nav_item _active" href="client.html"><img class="nav_item_icon" src="../../icons/user-solid.svg"><span class="left_active">Клиенты</span></a>
+        <a class="nav_item" href="../container/container.html"><img class="nav_item_icon" src="../../icons/crane.svg"><span>Контейнеры</span></a>
+        <a class="nav_item" href="../shop/shop.html"><img class="nav_item_icon" src="../../icons/worldwide-shipping.svg"><span>Магазин</span></a>
+        <a class="nav_item" href="../auction/auction.html"><img class="nav_item_icon" src="../../icons/auction.svg"><span>Аукционы</span></a>
+        <a class="nav_item" href="../car/car.html"><img class="nav_item_icon" src="../../icons/car.svg"><span>Машины</span></a>
+        <a class="nav_item" href="../income/income.html"><img class="nav_item_icon" src="../../icons/money-bag-with-dollar-symbol.svg"><span >Доходы</span></a>
+        <a class="nav_item" href="../monthly_payment/monthlyPayment.html"><img class="nav_item_icon" src="../../icons/eje_oplat.svg"><span >Ежемесячные оплаты</span></a>
+        <a class="nav_item" href="#"><img class="nav_item_icon" src="../../icons/icon_n1.svg"><span >Зарплата сотрудников</span></a>
+        <a class="nav_item" href="../employee/employee.html"><img class="nav_item_icon" src="../../icons/icon_n2.svg"><span >Сотрудники</span></a>
+        <a class="nav_item" href="../manager/manager.html"><img class="nav_item_icon" src="../../icons/light-bulb.svg"><span class="">Менеджеры</span></a>
+        <a class="nav_item" href="#"><img class="nav_item_icon" src="../../icons/trend.svg"><span>Статистика</span></a>
+    </div>
+    <br>
+    <div id="main_container" class="main_container">
+        <div class="heard">
+            <div class="heard_left">
+                <a href="#" class="i_span i_span_left">История баланса</a>
+            </div>
+            <div class="heard_right">
+                <a href="client.html" class="i_span i_span_active">Клиенты</a>  
+                <img src="icons/angle-right-solid.svg" class="icon_st" alt="">
+                <a href="#" class="i_span ">История баланса</a>          
+            </div>
+        </div>
+        <div class="main main_bay">
+            <br>
+            <div class="main_content">
+            <form>
+                <input class="input_search" type="text">
+                <input class="btn btn-primary input_search_button" value="Поиск" type="submit">
+            </form>
+                <br>
+            <div class="scroll">
+                <table class="table  table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Имя клиента</th>
+                            <th>Дата</th>
+                            <th>Пополнение /Сумма в JPY</th>
+                            <th>Снятие /Сумма в JPY</th>
+                            <th>Сумма в USA</th>
+                            <th>Курс</th>
+                            <th>Имя отправителя</th>
+                            <th>Комментарий</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       <tr>
+                            <td class="align-middle">1</td>
+                            <td class="align-middle"></td>
+                            <td class="align-middle"></td>
+                            <td class="align-middle"></td>
+                            <td class="align-middle"></td>
+                            <td class="align-middle"></td>
+                            <td class="align-middle"></td>
+                            <td class="align-middle"></td>
+                            <td class="align-middle"></td>
+                        </tr>
+                        <tr>
+                            <td class="align-middle">2</td>
+                            <td class="align-middle"></td>
+                            <td class="align-middle"></td>
+                            <td class="align-middle"></td>
+                            <td class="align-middle"></td>
+                            <td class="align-middle"></td>
+                            <td class="align-middle"></td>
+                            <td class="align-middle"></td>
+                            <td class="align-middle"></td>
+                        </tr>
+                        <tr>
+                            <td class="align-middle">3</td>
+                            <td class="align-middle"></td>
+                            <td class="align-middle"></td>
+                            <td class="align-middle"></td>
+                            <td class="align-middle"></td>
+                            <td class="align-middle"></td>
+                            <td class="align-middle"></td>
+                            <td class="align-middle"></td>
+                            <td class="align-middle"></td>
+                        </tr>
+                    </tbody>
+                </table><br>
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="../../js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Покупка</title>
+</head>
+
+<body>
+    <div class="head">
+        <a class="head_left" href="#">Sanrijapan.com</a>
+        <a class="head_right" href="#">Admin</a>
+    </div>
+    <div class="nav" id="nav">
+        <div><img onclick="nav_burger()" class="burger" id="burger" src="../../icons/bars-solid.svg"></div>
+        <a class="nav_item  _active" href="index.html"><img class="nav_item_icon" src="../../icons/database-solid.svg"><span class="left_active">Общая база</span></a>
+        <a class="nav_item" href="../client/client.html"><img class="nav_item_icon" src="../../icons/user-solid.svg"><span>Клиенты</span></a>
+        <a class="nav_item" href="../container/container.html"><img class="nav_item_icon" src="../../icons/crane.svg"><span>Контейнеры</span></a>
+        <a class="nav_item" href="../shop/shop.html"><img class="nav_item_icon" src="../../icons/worldwide-shipping.svg"><span>Магазин</span></a>
+        <a class="nav_item" href="../auction/auction.html"><img class="nav_item_icon" src="../../icons/auction.svg"><span>Аукционы</span></a>
+        <a class="nav_item" href="../car/car.html"><img class="nav_item_icon" src="../../icons/car.svg"><span>Машины</span></a>
+        <a class="nav_item" href="../income/income.html"><img class="nav_item_icon" src="../../icons/money-bag-with-dollar-symbol.svg"><span >Доходы</span></a>
+        <a class="nav_item" href="../monthly_payment/monthlyPayment.html"><img class="nav_item_icon" src="../../icons/eje_oplat.svg"><span >Ежемесячные оплаты</span></a>
+        <a class="nav_item" href="#"><img class="nav_item_icon" src="../../icons/icon_n1.svg"><span >Зарплата сотрудников</span></a>
+        <a class="nav_item" href="../employee/employee.html"><img class="nav_item_icon" src="../../icons/icon_n2.svg"><span >Сотрудники</span></a>
+        <a class="nav_item" href="../manager/manager.html"><img class="nav_item_icon" src="../../icons/light-bulb.svg"><span class="">Менеджеры</span></a>
+        <a class="nav_item" href="#"><img class="nav_item_icon" src="../../icons/trend.svg"><span>Статистика</span></a>
+    </div>
+    <br>
+    <div id="main_container" class="main_container">
+        <div class="heard">
+            <div class="heard_left">
+                <a href="#" class="i_span i_span_left">Покупка</a>
+            </div>
+            <div class="heard_right">
+                <a href="index.html" class="i_span i_span_active">Общая база</a>
+                <img src="../../icons/angle-right-solid.svg" class="icon_st" alt="">
+                <a href="#" class="i_span i_span_active">Добавить новую</a>
+                <img src="../../icons/angle-right-solid.svg" class="icon_st" alt="">
+                <a href="#" class="i_span">Покупка</a>
+            </div>
+        </div>
+        <div class="main main_bay">
+            <br>
+            <form>
+                <label for="client">Клиент</label>
+                <select class="form-control" id='client'>
+                    <option selected>-------------------------</option>
+                </select>
+
+                <label for="bay_date">Дата</label>
+                <input type="date" id="bay_date" class="form-control">
+                <label for="aution">Аукцион</label>
+                <select class="form-control" id='aution'>
+                    <option selected>-------------------------</option>
+                </select>
+
+                <label for="num_lota">Номер лота</label>
+                <input type="text" placeholder="номер лота" id="num_lota" class="form-control">
+                <label for="marka">Марка</label>
+                <input type="text" placeholder="марка" id="marka" class="form-control">
+                <label for="num_kuzov">Номер кузова</label>
+                <input type="text" placeholder="номер кузова" id="num_kuzov" class="form-control">
+                <label for="year_let">Год выпуска</label>
+                <input type="text" placeholder="год" id="year_let" class="form-control">
+                <label for="bay_price">Цена</label>
+                <input type="number" placeholder="цена" id="bay_price" class="form-control">
+                <label for="bay_recycle">Recycle</label>
+                <input type="number" placeholder="recycle" id="bay_recycle" class="form-control">
+                <label for="bay_auction">Auction</label>
+                <input type="text" placeholder="auction" id="bay_auction" class="form-control">
+                <label for="bay_transport">Transport</label>
+                <input type="text" placeholder="transport" id="bay_transport" class="form-control">
+                <label for="bay_fob">FOB</label>
+                <input type="number" placeholder="fob" id="bay_fob" class="form-control">
+                <label for="bay_amount">+Amount</label>
+                <input type="number" placeholder="amount" id="bay_amount" class="form-control">
+                <label for="bay_trans">Транспортная ком.</label>
+                <input type="number" placeholder="транспортная ком." id="bay_trans" class="form-control">
+                <label>На стоянку</label><br>
+
+                <input id="parking1" class="parking" name="parking" type="radio" value="1">
+                <label class="radio_button m-1" for="parking1">1</label>
+                <input id="parking2" class="parking" name="parking" type="radio" value="2">
+                <label class="radio_button m-1" for="parking2">2</label>
+                <input id="parking3" class="parking" name="parking" type="radio" value="3">
+                <label class="radio_button m-1" for="parking3">3</label>
+                <input id="parking4" class="parking" name="parking" type="radio" value="4">
+                <label class="radio_button m-1" for="parking4">4</label>
+                
+                <br><br>
+
+                <label>На номера</label><br>
+                <div class="custom-control custom-radio ml-4">
+                    <input type="radio" name="stoinka" id="bay_stoinka_1" class="custom-control-input" value="false">
+                    <label class="custom-control-label" for="bay_stoinka_1">Без номеров</label>
+                </div>
+                <div class="custom-control custom-radio ml-4">
+                    <input type="radio" name="stoinka" id="bay_stoinka_2" class="custom-control-input" value="true">
+                    <label class="custom-control-label" for="bay_stoinka_2">С номерами</label>
+                </div>
+                <br>
+                <label for="bay_total">Total</label>
+                <input type="number" placeholder="total" id="bay_total" class="form-control">
+                <label for="bay_total_fob">Total FOB</label>
+                <input type="number" placeholder="total fob" id="bay_total_fob" class="form-control"><br>
+                <div class="btn_right">
+                    <input type="button" id="clickPostAdd" value="Сохранить" class="btn btn-success mb-4 align-right">
+                    <input type="submit" value="Отмена" class="btn btn-secondary ml-3 mb-4">
+                </div>
+            </form><br><br>
+        </div>
+    </div>
+    <script src="../../js/index.js"></script>
+    <script src="../../js/url.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $('#clickPostAdd').click(function(e) {
+            e.preventDefault();
+            var datajson = {
+                "client": parseInt(document.getElementById('client').value),
+                "auction": parseInt(document.getElementById('aution').value),
+                "lotNumber": document.getElementById('num_lota').value,
+                "carModel": document.getElementById('marka').value,
+                "vinNumber": document.getElementById('num_kuzov').value,
+                "year": document.getElementById('year_let').value,
+                "price": parseInt(document.getElementById('bay_price').value),
+                "recycle": parseInt(document.getElementById('bay_recycle').value),
+                "auctionFees": parseInt(document.getElementById('bay_auction').value),
+                "transport": parseInt(document.getElementById('bay_transport').value),
+                "fob": parseInt(document.getElementById('bay_fob').value),
+                "amount": parseInt(document.getElementById('bay_amount').value),
+                "transportationCommission": parseInt(document.getElementById('bay_trans').value),
+                "parking": parseInt(document.querySelector('input[name="parking"]:checked').value),
+                "carNumber": Boolean(document.querySelector('input[name="stoinka"]:checked').value),
+                "total": parseInt(document.getElementById('bay_total').value),
+                "total_FOB": parseInt(document.getElementById('bay_total_fob').value)
+            };
+            console.log(datajson);
+            
+            $.ajax({
+                type: "POST",
+                url: httpBaseUrl + "/api/CarOrder/",
+                data: JSON.stringify(datajson),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(data) {
+                    console.log('Submission was successful.');
+                    console.log(data);
+                    window.location.href = 'index.html';
+                },
+                error: function(data) {
+                    console.log('An error occurred.');
+                    console.log(data);
+                },
+            });
+        });
+
+        clientList = document.getElementById('client');
+        $.ajax({
+            type: "GET",
+            url: httpBaseUrl + "/api/Client",
+            success: function (response) {
+                console.log('Submission was successful.');
+                response.forEach(element => {
+                    clientList.innerHTML +=
+                    '<option value="'+element.id+'">'+element.fullName+'</option>'
+                    }); 
+                console.log(response);
+            },
+            error: function (response) {
+                console.log('An error occurred.');
+                console.log(response);
+            },
+        });
+
+        autionList = document.getElementById('aution');
+        $.ajax({
+            type: "GET",
+            url: httpBaseUrl + "/api/Auction",
+            success: function (response) {
+                console.log('Submission was successful.');
+                response.forEach(element => {
+                    autionList.innerHTML +=
+                    '<option value="'+element.id+'">'+element.name+'</option>'
+                    }); 
+                console.log(response);
+            },
+            error: function (response) {
+                console.log('An error occurred.');
+                console.log(response);
+            },
+        });
+    </script>
+</body>
+
+</html>

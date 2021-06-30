@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Машины</title>
+</head>
+<body>
+    <div class="head">
+        <a class="head_left" href="#">Sanrijapan.com</a>
+        <a class="head_right" href="#">Admin</a>
+    </div>
+    <div class="nav" id="nav">
+        <div><img onclick="nav_burger()" class="burger" id="burger" src="../../icons/bars-solid.svg"></div>
+        <a class="nav_item  " href="../common_base/index.html"><img class="nav_item_icon" src="../../icons/database-solid.svg"><span >Общая база</span></a>
+        <a class="nav_item" href="../client/client.html"><img class="nav_item_icon" src="../../icons/user-solid.svg"><span>Клиенты</span></a>
+        <a class="nav_item" href="../container/container.html"><img class="nav_item_icon" src="../../icons/crane.svg"><span>Контейнеры</span></a>
+        <a class="nav_item" href="../shop/shop.html"><img class="nav_item_icon" src="../../icons/worldwide-shipping.svg"><span>Магазин</span></a>
+        <a class="nav_item" href="../auction/auction.html"><img class="nav_item_icon" src="../../icons/auction.svg"><span>Аукционы</span></a>
+        <a class="nav_item _active" href="car.html"><img class="nav_item_icon" src="../../icons/car.svg"><span class="left_active">Машины</span></a>
+        <a class="nav_item" href="../income/income.html"><img class="nav_item_icon" src="../../icons/money-bag-with-dollar-symbol.svg"><span >Доходы</span></a>
+        <a class="nav_item" href="../monthly_payment/monthlyPayment.html"><img class="nav_item_icon" src="../../icons/eje_oplat.svg"><span >Ежемесячные оплаты</span></a>
+        <a class="nav_item" href="#"><img class="nav_item_icon" src="../../icons/icon_n1.svg"><span >Зарплата сотрудников</span></a>
+        <a class="nav_item" href="../employee/employee.html"><img class="nav_item_icon" src="../../icons/icon_n2.svg"><span >Сотрудники</span></a>
+        <a class="nav_item" href="../manager/manager.html"><img class="nav_item_icon" src="../../icons/light-bulb.svg"><span class="">Менеджеры</span></a>
+        <a class="nav_item" href="#"><img class="nav_item_icon" src="../../icons/trend.svg"><span>Статистика</span></a>
+    </div>
+    <br>
+    <div id="main_container" class="main_container">
+        <br>
+        <div class="main">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4 class="head_text_1">Машины:</h4>
+                    <ul class="head_text_ul_1">
+                        <li><a href="carAdd.html">Добавить новый</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="main_content">
+                <form>
+                    <input class="input_search" type="text" placeholder="Поиск на странице">
+                    <input class="btn btn-primary input_search_button" value="Поиск" type="submit">
+                </form>
+                <div class="scroll">
+                    <table class="table  table-hover">
+                        <p class="ml-5">Всего машин ( <span id='CountCar'></span> )</p>
+                        <thead>
+                            <tr>
+                                <th  width="80px">№</th>
+                                <th class="text-left">Название</th>
+                                <th width="180px"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="cars"></tbody>
+                    </table><br>
+                </div>
+            </div><br>
+        </div>
+    </div>
+
+    <div id="add_modal">
+        <div class="modal_container">
+            <span onclick="CloseModal()" class="close">&times;</span>
+            <h3 style="text-align: center;">Редактировать</h3><br><br>
+            <form id="addInput"></form>
+        </div>
+    </div>
+
+<script src="../../js/index.js"></script>
+<script src="../../js/url.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script>
+    var carList = document.getElementById('cars');
+    var carLength = document.getElementById('CountCar');
+
+    var modal = document.getElementById("add_modal");
+    var inputAdd = document.getElementById("addInput");
+
+    $.ajax({
+        type: "GET",
+        url: httpBaseUrl + "/api/CarModel",
+        success: function (response) {
+            console.log('Submission was successful.');
+            carLength.innerHTML = response.length;
+            var responseCarList = [];
+            response.forEach(function(element, index){
+                carList.innerHTML +=
+                    '<tr>'+
+                        '<td class="align-middle">'+(index+1)+'</td>'+
+                        '<td class="align-middle text-left">'+element.name+'</td>'+
+                        '<td>'+
+                            '<button onclick="UpdateGet('+element.id+')" class="btn btn-primary">Редактировать</button>'+
+                            '<button onclick="DeleteCar('+element.id+')" class="btn btn-danger ml-3 mr-3 mt-1 mb-1 align-middle">Удалить</button>'+
+                        '</td>'+
+                    '</tr>';
+                }); 
+            console.log(response);
+        },
+        error: function (response) {
+            console.log('An error occurred.');
+            console.log(response);
+        },
+    });
+    function DeleteCar(id) {
+        $.ajax({
+            type: "DELETE",
+            url: httpBaseUrl + "/api/CarModel/"+id,
+            success: function (data) {
+                console.log('Submission was successful.');
+                console.log(data);
+                window.location.reload();
+            },
+            error: function (data) {
+                console.log('An error occurred.');
+                console.log(data);
+            },
+        });
+    };
+    function UpdateGet(id){
+        modal.style.display = 'block';
+        $.ajax({
+            type: "GET",
+            url: httpBaseUrl + "/api/CarModel/"+id,
+            success: function (response) {
+                console.log('Submission was successful.');
+                inputAdd.innerHTML += 
+                    '<label>Название:</label>'+
+                    '<input id="nameUpdate" class="form-control" value="'+response.name+'" type="text">'+
+                    '<button type="button" onclick="clickPutAdd('+response.id+')" class="btn btn-primary m-4 float-right">Добавить</button>'
+                console.log(response);
+            },
+            error: function (response) {
+                console.log('An error occurred.');
+                console.log(response);
+            },
+        });
+    };
+    function clickPutAdd(id){
+        var datajson = {
+            "name":  document.getElementById('nameUpdate').value
+        };
+        $.ajax({
+            type: "PUT",
+            url: httpBaseUrl + "/api/CarModel/"+id+"/",
+            data: JSON.stringify(datajson),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                console.log('Submission was successful.');
+                console.log(data);
+                window.location.href = 'car.html';
+            },
+            error: function (data) {
+                console.log('An error occurred.');
+                console.log(data);
+            },
+        });
+    };
+    function CloseModal(){
+        modal.style.display = "none";
+        inputAdd.innerHTML = '';
+    }
+</script>
+</body>
+</html>

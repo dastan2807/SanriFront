@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="head">
+        <a class="head_left" href="#">Sanrijapan.com</a>
+        <a class="head_right" href="#">Admin</a>
+    </div>
+    <div class="nav" id="nav">
+        <div><img onclick="nav_burger()" class="burger" id="burger" src="../../icons/bars-solid.svg"></div>
+        <a class="nav_item" href="../common_base/index.html"><img class="nav_item_icon" src="../../icons/database-solid.svg"><span>Общая база</span></a>
+        <a class="nav_item" href="../client/client.html"><img class="nav_item_icon" src="../../icons/user-solid.svg"><span>Клиенты</span></a>
+        <a class="nav_item" href="../container/container.html"><img class="nav_item_icon" src="../../icons/crane.svg"><span>Контейнеры</span></a>
+        <a class="nav_item _active" href="shop.html"><img class="nav_item_icon" src="../../icons/worldwide-shipping.svg"><span  class="left_active">Магазин</span></a>
+        <a class="nav_item" href="../auction/auction.html"><img class="nav_item_icon" src="../../icons/auction.svg"><span>Аукционы</span></a>
+        <a class="nav_item" href="../car/car.html"><img class="nav_item_icon" src="../../icons/car.svg"><span>Машины</span></a>
+        <a class="nav_item" href="../income/income.html"><img class="nav_item_icon" src="../../icons/money-bag-with-dollar-symbol.svg"><span >Доходы</span></a>
+        <a class="nav_item" href="../monthly_payment/monthlyPayment.html"><img class="nav_item_icon" src="../../icons/eje_oplat.svg"><span >Ежемесячные оплаты</span></a>
+        <a class="nav_item" href="#"><img class="nav_item_icon" src="../../icons/icon_n1.svg"><span >Зарплата сотрудников</span></a>
+        <a class="nav_item" href="../employee/employee.html"><img class="nav_item_icon" src="../../icons/icon_n2.svg"><span >Сотрудники</span></a>
+        <a class="nav_item" href="../manager/manager.html"><img class="nav_item_icon" src="../../icons/light-bulb.svg"><span class="">Менеджеры</span></a>
+        <a class="nav_item" href="#"><img class="nav_item_icon" src="../../icons/trend.svg"><span>Статистика</span></a>
+    </div>
+    <br>
+    <div id="main_container" class="main_container">
+        <br>
+        <div class="main">
+            <button class="btn btn-primary ml-5 mt-3 mb-3" id='append_shop'>Добавить</button>
+            <div class="shop_img">
+                <div class="shop_item">
+                    <img src="../../img/download.jpeg" alt="">
+                    <button class="btn btn-success ml-4 mb-3 mt-2">Редактировать</button>
+                    <button class="btn btn-danger float-right mr-4 mb-3 mt-2">Удалить</button>
+                </div>
+                <div class="shop_item">
+                    <img src="../../img/download.jpeg" alt="">
+                    <button class="btn btn-success ml-4 mb-3 mt-2">Редактировать</button>
+                    <button class="btn btn-danger float-right mr-4 mb-3 mt-2">Удалить</button>
+                </div>
+                <div class="shop_item">
+                    <img src="../../img/download.jpeg" alt="">
+                    <button class="btn btn-success ml-4 mb-3 mt-2">Редактировать</button>
+                    <button class="btn btn-danger float-right mr-4 mb-3 mt-2">Удалить</button>
+                </div>
+                <div class="shop_item">
+                    <img src="../../img/download.jpeg" alt="">
+                    <button class="btn btn-success ml-4 mb-3 mt-2">Редактировать</button>
+                    <button class="btn btn-danger float-right mr-4 mb-3 mt-2">Удалить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="add_modal_append">
+        <div class="modal_container_append">
+            <span onclick="CloseModalAppend()" class="close_append">&times;</span>
+            <h3 style="text-align: center;">Добавить</h3><br><br>
+            <form id="addInput_append">
+                <label for="brand">Бренд: </label>
+                <input type="text" class="form-control" id="brand">
+                <label for="model">Модель: </label>
+                <input type="text" class="form-control" id="model">
+                <label for="year">Год: </label>
+                <input type="text" class="form-control" id="year">
+                <label for="milage">Пробег: </label>
+                <input type="text" class="form-control" id="milage">
+                <label for="body">Тело: </label>
+                <input type="text" class="form-control" id="body">
+                <label for="displacement">Смещение: </label>
+                <input type="text" class="form-control" id="displacement">
+                <label for="complect">Собирать: </label>
+                <input type="text" class="form-control" id="complect">
+                <label for="condition">Условие: </label>
+                <input type="text" class="form-control" id="condition">
+                <label for="price">Цена: </label>
+                <input type="text" class="form-control" id="price">
+                <label for="status">Статус: </label>
+                <input type="text" class="form-control" id="status">
+                <label for="imgs">Фото: </label><hr>
+                <div id="imgForm"><input type="file" name="imgForms"></div><br>
+
+                
+                <button type="button" onclick="Counter()" class="btn btn-success btn-sm">Добавить поле</button><hr>
+
+                <button type="button" class="btn btn-primary" id="append_shop_in">Добавить</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="add_modal">
+        <div class="modal_container">
+            <span onclick="CloseModal()" class="close">&times;</span>
+            <h3 style="text-align: center;">Редактировать</h3><br><br>
+            <form id="addInput"></form>
+        </div>
+    </div>
+<script src="../../js/index.js"></script>
+<script src="../../js/url.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        addTable = document.getElementById('addTable');
+
+        var modal = document.getElementById("add_modal");
+        var modal_append = document.getElementById("add_modal_append");
+        var inputAdd = document.getElementById("addInput");
+        var addInput_append = document.getElementById("addInput_append");
+        var formDiv = document.getElementById('imgForm');
+
+        function Counter(){
+            formDiv.innerHTML += "<input style='margin-top: 7px;' name='imgForms' type='file'>";
+        }
+
+        $('#append_shop').click(function(){
+            modal_append.style.display = 'block';
+        });
+
+        $('#append_shop_in').click(function(e){
+            e.preventDefault();
+            var arrayImg = [];
+            document.getElementsByName('imgForms').forEach(function(el, index){
+                arrayImg.push({"id": index, "name": el.value});
+            });
+            var datajson = {
+                "brand":  document.getElementById('brand').value,
+                "model":  document.getElementById('model').value,
+                "year":  document.getElementById('year').value,
+                "milage":  document.getElementById('milage').value,
+                "body":  document.getElementById('body').value,
+                "displacement":  document.getElementById('displacement').value,
+                "complect":  document.getElementById('complect').value,
+                "condition":  document.getElementById('condition').value,
+                "price":  document.getElementById('price').value,
+                "status":  document.getElementById('status').value,
+                "imgs":  arrayImg
+            };
+            console.log(datajson);
+
+            $.ajax({
+                type: "POST",
+                url: httpBaseUrl + "/api/CarStore/",
+                data: JSON.stringify(datajson),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    console.log('Submission was successful.');
+                    console.log(data);
+                    window.location.reload();
+                },
+                error: function (data) {
+                    console.log('An error occurred.');
+                    console.log(data);
+                },
+            });
+            
+            modal_append.style.display = 'none';
+        });
+
+
+
+
+        // $.ajax({
+        //     type: "GET",
+        //     data: {},
+        //     url: httpBaseUrl + "/api/CarOrder",
+        //     success: function (response) {
+        //         console.log('Submission was successful.');
+        //         response.forEach(element => {
+        //             addTable.innerHTML +=
+        //                 '<tr>'+
+        //                     '<td class="align-middle">'+element.id+'</td>'+
+        //                     '<td class="align-middle">'+element.createdAt+'</td>'+
+        //                     '<td class="align-middle">'+element.client.fullName+'</td>'+
+        //                     '<td class="align-middle">'+element.carModel+'</td>'+
+        //                     '<td class="align-middle">'+element.lotNumber+'</td>'+
+        //                     '<td class="align-middle">'+element.auction.name+'</td>'+
+        //                     '<td class="align-middle">'+element.vinNumber+'</td>'+
+        //                     '<td class="align-middle">'+element.price+'</td>'+
+        //                     '<td class="align-middle">'+element.price10Percent+'</td>'+
+        //                     '<td class="align-middle">'+element.auctionFees+'</td>'+
+        //                     '<td class="align-middle">'+element.recycle+'</td>'+
+        //                     '<td class="align-middle">'+element.transport+'</td>'+
+        //                     '<td class="align-middle">'+element.total+'</td>'+
+        //                     '<td class="align-middle">'+element.amount+'</td>'+
+        //                     '<td class="align-middle">'+element.fob+'</td>'+
+        //                     '<td class="align-middle">'+element.total_FOB+'</td>'+
+        //                     '<td>'+
+        //                         '<button onclick="UpdateGet('+element.id+')" class="btn btn-success ml-3 mr-3 mt-1 mb-1 align-middle">Изменить</button>'+
+        //                         '<button onclick="DeleteCar('+element.id+')" class="btn btn-primary ml-3 mr-3 mt-1 mb-1 align-middle">Препродать</button>'+
+        //                     '</td>'+
+        //                 '</tr>';
+        //             }); 
+        //     },
+        //     error: function (data) {
+        //         console.log('An error occurred.');
+        //         console.log(data);
+        //     },
+        // });
+
+        // function UpdateGet(id){
+        //     modal.style.display = 'block';
+        //     $.ajax({
+        //         type: "GET",
+        //         url: httpBaseUrl + "/api/CarOrder/"+id,
+        //         success: function (response) {
+        //             console.log('Submission was successful.');
+        //             inputAdd.innerHTML += 
+        //                 '<label>Дата:</label>'+
+        //                 '<input id="addText" class="form-control" value="'+response.createdAt+'" type="text">'+
+        //                 '<label>Клиент:</label>'+
+        //                 '<input id="addText" class="form-control" value="'+response.client+'" type="text">'+
+        //                 '<label>Марка:</label>'+
+        //                 '<input id="addText" class="form-control" value="'+response.carModel+'" type="text">'+
+        //                 '<label>Номер лота:</label>'+
+        //                 '<input id="addText" class="form-control" value="'+response.lotNumber+'" type="text">'+
+        //                 '<label>Аукцион:</label>'+
+        //                 '<input id="addText" class="form-control" value="'+response.auction+'" type="text">'+
+        //                 '<label>Номер кузова:</label>'+
+        //                 '<input id="addText" class="form-control" value="'+response.vinNumber+'" type="text">'+
+        //                 '<label>Price:</label>'+
+        //                 '<input id="addText" class="form-control" value="'+response.price+'" type="text">'+
+        //                 '<label>10% of price:</label>'+
+        //                 '<input id="addText" class="form-control" value="'+response.price10Percent+'" type="text">'+
+        //                 '<label>(Раксатсу) Auction fees:</label>'+
+        //                 '<input id="addText" class="form-control" value="'+response.auctionFees+'" type="text">'+
+        //                 '<label>(Утилизация) Recycle:</label>'+
+        //                 '<input id="addText" class="form-control" value="'+response.recycle+'" type="text">'+
+        //                 '<label>(Риксо) Transport:</label>'+
+        //                 '<input id="addText" class="form-control" value="'+response.transport+'" type="text">'+
+        //                 '<label>Total:</label>'+
+        //                 '<input id="addText" class="form-control" value="'+response.total+'" type="text">'+
+        //                 '<label>Amount:</label>'+
+        //                 '<input id="addText" class="form-control" value="'+response.amount+'" type="text">'+
+        //                 '<label>FOB:</label>'+
+        //                 '<input id="addText" class="form-control" value="'+response.fob+'" type="text">'+
+        //                 '<label>Total of FOBs:</label>'+
+        //                 '<input id="addText" class="form-control" value="'+response.total_FOB+'" type="text">'+
+        //                 '<button onclick="clickPutAdd('+response.id+')" class="btn btn-primary m-4 float-right">Добавить</button>'
+        //             console.log(response);
+        //         },
+        //         error: function (response) {
+        //             console.log('An error occurred.');
+        //             console.log(response);
+        //         },
+        //     });
+        // };
+
+        function CloseModal(){
+            modal.style.display = "none";
+            inputAdd.innerHTML = '';
+        }
+        function CloseModalAppend(){
+            modal_append.style.display = "none";
+        }
+
+    </script>
+</body>
+</html>

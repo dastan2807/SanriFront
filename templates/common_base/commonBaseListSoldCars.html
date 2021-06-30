@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Покупка</title>
+</head>
+<body>
+    <div class="head">
+        <a class="head_left" href="#">Sanrijapan.com</a>
+        <a class="head_right" href="#">Admin</a>
+    </div>
+    <div class="nav" id="nav">
+        <div><img onclick="nav_burger()" class="burger" id="burger" src="../../icons/bars-solid.svg"></div>
+        <a class="nav_item  _active" href="index.html"><img class="nav_item_icon" src="../../icons/database-solid.svg"><span class="left_active">Общая база</span></a>
+        <a class="nav_item" href="../client/client.html"><img class="nav_item_icon" src="../../icons/user-solid.svg"><span>Клиенты</span></a>
+        <a class="nav_item" href="../container/container.html"><img class="nav_item_icon" src="../../icons/crane.svg"><span>Контейнеры</span></a>
+        <a class="nav_item" href="../shop/shop.html"><img class="nav_item_icon" src="../../icons/worldwide-shipping.svg"><span>Магазин</span></a>
+        <a class="nav_item" href="../auction/auction.html"><img class="nav_item_icon" src="../../icons/auction.svg"><span>Аукционы</span></a>
+        <a class="nav_item" href="../car/car.html"><img class="nav_item_icon" src="../../icons/car.svg"><span>Машины</span></a>
+        <a class="nav_item" href="../income/income.html"><img class="nav_item_icon" src="../../icons/money-bag-with-dollar-symbol.svg"><span >Доходы</span></a>
+        <a class="nav_item" href="../monthly_payment/monthlyPayment.html"><img class="nav_item_icon" src="../../icons/eje_oplat.svg"><span >Ежемесячные оплаты</span></a>
+        <a class="nav_item" href="#"><img class="nav_item_icon" src="../../icons/icon_n1.svg"><span >Зарплата сотрудников</span></a>
+        <a class="nav_item" href="../employee/employee.html"><img class="nav_item_icon" src="../../icons/icon_n2.svg"><span >Сотрудники</span></a>
+        <a class="nav_item" href="../manager/manager.html"><img class="nav_item_icon" src="../../icons/light-bulb.svg"><span class="">Менеджеры</span></a>
+        <a class="nav_item" href="#"><img class="nav_item_icon" src="../../icons/trend.svg"><span>Статистика</span></a>
+    </div>
+    <br>
+    <div id="main_container" class="main_container">
+        <div class="heard">
+            <div class="heard_left">
+                <a href="#" class="i_span i_span_left">Список проданных машин</a>
+            </div>
+            <div class="heard_right">
+                <a href="index.html" class="i_span i_span_active">Общая база</a>  
+                <img src="../../icons/angle-right-solid.svg" class="icon_st" alt="">
+                <a href="#" class="i_span">Список проданных машин</a>
+            </div>
+        </div>
+        <div class="main main_history_sell">
+            <div class="main_content history_sell">
+                <div class="scroll_history_sell">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>№</th>
+                                <th>Владелец</th>
+                                <th>Дата</th>
+                                <th>Аукцион</th>
+                                <th>Марка</th>
+                                <th>Номер кузова</th>
+                                <th>Цена</th>
+                                <th>10% от цена</th>
+                                <th>Recycle</th>
+                                <th>Аукционские сборы</th>
+                                <th>Сборы за продажу</th>                                
+                                <th>Статус</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody id="carSale">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="../../js/index.js"></script>
+<script src="../../js/url.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script>
+    var carList = document.getElementById('carSale');
+
+    $.ajax({
+        type: "GET",
+        url: httpBaseUrl + "/api/CarSale",
+        success: function (response) {
+            console.log('Submission was successful.');
+            response.forEach(function(element, index){
+                carList.innerHTML +=
+                '<tr>'+
+                    '<td class="align-middle">'+(index+1)+'</td>'+
+                    '<td class="align-middle">'+element.ownerClient+'</td>'+
+                    '<td class="align-middle">'+new Date(element.created_at).getDate()+'.'+new Date(element.created_at).getMonth()+'.'+new Date(element.created_at).getFullYear()+'</td>'+
+                    '<td class="align-middle">'+element.auction+'</td>'+
+                    '<td class="align-middle">'+element.carModel+'</td>'+
+                    '<td class="align-middle">'+element.vinNumber+'</td>'+
+                    '<td class="align-middle">'+element.price+'</td>'+
+                    '<td class="align-middle">'+(element.price*90/100)+'</td>'+
+                    '<td class="align-middle">'+element.recycle+'</td>'+
+                    '<td class="align-middle">'+element.auctionFees+'</td>'+
+                    '<td class="align-middle">'+element.salesFees+'</td>'+
+                    '<td class="align-middle">'+element.status+'</td>'+
+                    '<td class="align-middle">'+element.total+'</td>'+
+                '</tr>';
+                }); 
+            console.log(response);
+        },
+        error: function (response) {
+            console.log('An error occurred.');
+            console.log(response);
+        },
+    });
+</script>
+</body>
+</html>

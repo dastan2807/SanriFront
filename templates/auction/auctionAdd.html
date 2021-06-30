@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Аукционы2</title>
+</head>
+<body>
+    <div class="head">
+        <a class="head_left" href="#">Sanrijapan.com</a>
+        <a class="head_right" href="#">Admin</a>
+    </div>
+    <div class="nav" id="nav">
+        <div><img onclick="nav_burger()" class="burger" id="burger" src="../../icons/bars-solid.svg"></div>
+        <a class="nav_item  " href="../common_base/index.html"><img class="nav_item_icon" src="../../icons/database-solid.svg"><span >Общая база</span></a>
+        <a class="nav_item" href="../client/client.html"><img class="nav_item_icon" src="../../icons/user-solid.svg"><span>Клиенты</span></a>
+        <a class="nav_item" href="../container/container.html"><img class="nav_item_icon" src="../../icons/crane.svg"><span>Контейнеры</span></a>
+        <a class="nav_item" href="../shop/shop.html"><img class="nav_item_icon" src="../../icons/worldwide-shipping.svg"><span>Магазин</span></a>
+        <a class="nav_item _active" href="auction.html"><img class="nav_item_icon" src="../../icons/auction.svg"><span class="left_active">Аукционы</span></a>
+        <a class="nav_item" href="../car/car.html"><img class="nav_item_icon" src="../../icons/car.svg"><span>Машины</span></a>
+        <a class="nav_item" href="../income/income.html"><img class="nav_item_icon" src="../../icons/money-bag-with-dollar-symbol.svg"><span >Доходы</span></a>
+        <a class="nav_item" href="../monthly_payment/monthlyPayment.html"><img class="nav_item_icon" src="../../icons/eje_oplat.svg"><span >Ежемесячные оплаты</span></a>
+        <a class="nav_item" href="#"><img class="nav_item_icon" src="../../icons/icon_n1.svg"><span >Зарплата сотрудников</span></a>
+        <a class="nav_item" href="../employee/employee.html"><img class="nav_item_icon" src="../../icons/icon_n2.svg"><span >Сотрудники</span></a>
+        <a class="nav_item" href="../manager/manager.html"><img class="nav_item_icon" src="../../icons/light-bulb.svg"><span class="">Менеджеры</span></a>
+        <a class="nav_item" href="#"><img class="nav_item_icon" src="../../icons/trend.svg"><span>Статистика</span></a>
+    </div>
+    <br>
+    <div id="main_container" class="main_container">
+        <div class="heard">
+            <div class="heard_left">
+                <a href="#" class="i_span i_span_left left_active">Добавить новый</a>
+            </div>
+            <div class="heard_right">
+                <a href="auction.html" class="i_span i_span_active">Аукционы</a>  
+                <img src="../../icons/angle-right-solid.svg" class="icon_st" alt="">
+                <a href="#" class="i_span ">Добавить новый</a>   
+            </div>
+        </div>
+        <div class="main main_bay">
+            <br>
+            <form>
+                <label for="name">Название</label>
+                <input id="name" type="text" placeholder="название" class="form-control">
+                <label for="sena1">Цена на стоянку № 1</label>
+                <input  id="sena1" type="text" placeholder="цена на стоянку № 1" class="form-control">
+                <label for="sena2">Цена на стоянку № 2</label>
+                <input id="sena2" type="text" placeholder="цена на стоянку № 2" class="form-control">
+                <label for="sena3">Цена на стоянку № 3</label>
+                <input id="sena3" type="text" placeholder="цена на стоянку № 3" class="form-control">
+                <label for="sena4">Цена на стоянку № 4</label>
+                <input id="sena4" type="text" placeholder="Цена на стоянку № 4" class="form-control">
+                <br>
+                <div class="btn_right">
+                <button id="clickPostAdd" class="btn btn-success mb-4 ">Сохранить</button>
+                <input type="submit" value="Отмена" class="btn btn-secondary ml-3 mb-4">
+                </div>
+            </form>
+            <br><br><br>
+            
+        </div><br>
+    </div>
+    <script src="../../js/index.js"></script>
+    <script src="../../js/url.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $('#clickPostAdd').click(function (e) {
+            e.preventDefault();
+            var datajson = {
+                "name": document.getElementById('name').value,
+                "parkingPrice1": document.getElementById('sena1').value,
+                "parkingPrice2": document.getElementById('sena2').value,
+                "parkingPrice3": document.getElementById('sena3').value,
+                "parkingPrice4": document.getElementById('sena4').value
+            };
+            console.log(datajson);
+
+            $.ajax({
+                type: "POST",
+                url: httpBaseUrl + "/api/Auction/",
+                data: JSON.stringify(datajson),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    console.log('Submission was successful.');
+                    console.log(data);
+                    window.location.href = 'auction.html';
+                },
+                error: function (data) {
+                    console.log('An error occurred.');
+                    console.log(data);
+                },
+            });
+        });
+    </script>
+</body>
+</html>

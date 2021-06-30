@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Доход</title>
+</head>
+<body>
+    <div class="head">
+        <a class="head_left" href="#">Sanrijapan.com</a>
+        <a class="head_right" href="#">Admin</a>
+    </div>
+    <div class="nav" id="nav">
+        <div><img onclick="nav_burger()" class="burger" id="burger" src="../../icons/bars-solid.svg"></div>
+        <a class="nav_item  " href="../common_base/index.html"><img class="nav_item_icon" src="../../icons/database-solid.svg"><span >Общая база</span></a>
+        <a class="nav_item" href="../client/client.html"><img class="nav_item_icon" src="../../icons/user-solid.svg"><span>Клиенты</span></a>
+        <a class="nav_item" href="../container/container.html"><img class="nav_item_icon" src="../../icons/crane.svg"><span>Контейнеры</span></a>
+        <a class="nav_item" href="../shop/shop.html"><img class="nav_item_icon" src="../../icons/worldwide-shipping.svg"><span>Магазин</span></a>
+        <a class="nav_item" href="../auction/auction.html"><img class="nav_item_icon" src="../../icons/auction.svg"><span>Аукционы</span></a>
+        <a class="nav_item" href="../car/car.html"><img class="nav_item_icon" src="../../icons/car.svg"><span>Машины</span></a>
+        <a class="nav_item _active" href="income.html"><img class="nav_item_icon" src="../../icons/money-bag-with-dollar-symbol.svg"><span class="left_active">Доходы</span></a>
+        <a class="nav_item" href="../monthly_payment/monthlyPayment.html"><img class="nav_item_icon" src="../../icons/eje_oplat.svg"><span >Ежемесячные оплаты</span></a>
+        <a class="nav_item" href="#"><img class="nav_item_icon" src="../../icons/icon_n1.svg"><span >Зарплата сотрудников</span></a>
+        <a class="nav_item" href="../employee/employee.html"><img class="nav_item_icon" src="../../icons/icon_n2.svg"><span >Сотрудники</span></a>
+        <a class="nav_item" href="../manager/manager.html"><img class="nav_item_icon" src="../../icons/light-bulb.svg"><span class="">Менеджеры</span></a>
+        <a class="nav_item" href="#"><img class="nav_item_icon" src="../../icons/trend.svg"><span>Статистика</span></a>
+    </div>
+    <br>
+    <div id="main_container" class="main_container">
+        <br>
+        <div class="main">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4 class="head_text_1">Доходы:</h4>
+                    <ul class="head_text_ul_1">
+                        <li><a href="incomeAddSum.html">Добавить сумму</a></li>
+                        <li><a href="incomeAddBranch.html">Добавить новый отрасль дохода</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="main_content">
+                <form>
+                    <input class="input_search" type="text" placeholder="Поиск на странице">
+                    <input class="btn btn-primary input_search_button" value="Поиск" type="submit">
+                </form>
+                <form class="float-left date_form" >
+                  <div class="form-group align-left" >
+                    <label for="exampleFormControlSelect1">По годам:</label>
+                        <select class="form-control " id="exampleFormControlSelect1">
+                            <option>2021</option>
+                            <option>2022</option>
+                            <option>2023</option>
+                            <option>2024</option>
+                            <option>2025</option>
+                            <option>2026</option>
+                            <option>2026</option>
+                            <option>2027</option>
+                            <option>2028</option>
+                            <option>2029</option>
+                            <option>2030</option>
+                            <option>2031</option>
+                        </select>
+                        <label for="exampleFormControlSelect2">По месяцам:</label><br>
+                        <span class="float-left mr-2"> c </span>
+                        <select class="form-control float-left" id="exampleFormControlSelect2">
+                            <option>Январь</option>
+                            <option>Февраль</option>
+                            <option>Март</option>
+                            <option>Апрель</option>
+                            <option>Май</option>
+                            <option>Июнь</option>
+                            <option>Июль</option>
+                            <option>Август</option>
+                            <option>Сентябрь</option>
+                            <option>Октябрь</option>
+                            <option>Ноябрь</option>
+                            <option>Декабрь</option>
+                        </select>
+                        <span class="float-left ml-2 mr-2">по</span>
+                        <select class="form-control" id="exampleFormControlSelect3">
+                            <option>Декабрь</option>
+                            <option>Январь</option>
+                            <option>Февраль</option>
+                            <option>Март</option>
+                            <option>Апрель</option>
+                            <option>Май</option>
+                            <option>Июнь</option>
+                            <option>Июль</option>
+                            <option>Август</option>
+                            <option>Сентябрь</option>
+                            <option>Октябрь</option>
+                            <option>Ноябрь</option>
+                        </select>
+                  </div>
+                </form>
+                <div class="scroll">
+                <table class="table  table-hover">
+                <p class="ml-5">Всего записей за март 2021 ( <span id="addCount"></span> ) | Общая сумма ( 1,210,000 )</p>
+                <thead>
+                    <tr>
+                        <th  width="80px">ID</th>
+                        <th>Дата</th>
+                        <th>Тип оплаты</th>
+                        <th>Сумма</th>
+                        <th>От контейнера</th>
+                        <th>Комментарий</th>
+                        <th></th> 
+                    </tr>
+                </thead>
+                <tbody id="addTable"></tbody>
+                <tbody>   
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td style="padding-top: 30px;" class="align-middle">Общая сумма: </td>
+                        <td style="padding-top: 30px;" id="fullSum" class="align-middle "></td>   
+                    </tr>
+                </tbody>
+                
+            </table><br>
+                </div>
+            </div><br>
+        </div>
+    </div>
+
+    <div id="add_modal">
+        <div class="modal_container">
+            <span onclick="CloseModal()" class="close">&times;</span>
+            <h3 style="text-align: center;">Редактировать</h3><br><br>
+            <form id="addInput"></form>
+        </div>
+    </div>
+
+<script src="../../js/index.js"></script>
+<script src="../../js/url.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+
+    var addTable = document.getElementById('addTable');
+    var addCount = document.getElementById('addCount');
+    var modal = document.getElementById("add_modal");
+    var inputAdd = document.getElementById("addInput");
+    var fullSum = 0;
+    var fullSumId = document.getElementById("fullSum");
+
+    var TypeList = [];
+    $.ajax({
+        type: "GET",
+        url: httpBaseUrl + "/api/Income/Type",
+        success: function (response) {
+            console.log('Submission was successful.');
+            response.forEach(element => {
+                TypeList.push([element.name, element.id]);
+            })
+        },
+        error: function (response) {
+            console.log('An error occurred.');
+            console.log(response);
+        },
+    });
+
+    $.ajax({
+        type: "GET",
+        data: {},
+        url: httpBaseUrl + "/api/Income",
+        success: function (response) {
+            console.log('Submission was successful.');
+            addCount.innerHTML = response.length;
+            response.forEach(function(element, i){
+                console.log(element);
+                fullSum += parseInt(element.amount);
+                addTable.innerHTML +=
+                    '<tr>'+
+                        '<td class="align-middle">'+(i+1)+'</td>'+
+                        '<td class="align-middle">'+element.date+'</td>'+
+                        '<td class="align-middle">'+element.type+'</td>'+
+                        '<td class="align-middle">'+element.amount+'</td>'+
+                        '<td class="align-middle">null</td>'+
+                        '<td class="align-middle">'+element.comment+'</td>'+
+                        '<td>'+
+                            '<button type="button" onclick="UpdateGet('+element.id+')" class="btn btn-primary align-middle">Редактировать</button>'+  
+                        '</td>'+
+                    '</tr>';
+            });
+            fullSumId.innerHTML = fullSum;
+        },
+        error: function (data) {
+            console.log('An error occurred.');
+            console.log(data);
+        },
+    });
+
+    function UpdateGet(id){
+        modal.style.display = 'block';
+        $.ajax({
+            type: "GET",
+            url: httpBaseUrl + "/api/Income/"+id,
+            success: function (response) {
+                console.log('Submission was successful.');
+                inputAdd.innerHTML += 
+                    '<label>Тип оплаты: </label>'+
+                    '<select class="form-control" id="typeIncome">'+
+                        '<option value="'+response.type+'"selected>'+response.type+'</option>'+
+                    '</select>'+
+                    '<label>Дата: </label>'+
+                    '<input id="dateid" class="form-control" value="'+response.date+'" type="text">'+
+                    '<label>Сумма: </label>'+
+                    '<input id="sumid" class="form-control" value="'+response.amount+'" type="text">'+
+                    '<label>От контейнера: </label>'+
+                    '<input disabled id="containerid" class="form-control" value="'+response.name+'" type="text">'+
+                    '<label>Комментарий: </label>'+
+                    '<input id="commentid" class="form-control" value="'+response.comment+'" type="text">'+
+                    '<button type="button" onclick="clickPutAdd('+response.id+')" class="btn btn-primary m-4 float-right">Обновить</button>'
+                console.log(response);
+                TypeSelect = document.getElementById('typeIncome');
+                TypeList.forEach(function(items){
+                    TypeSelect.innerHTML += '<option value="'+items[1]+'">'+items[0]+'</option>';
+                });
+            },
+            error: function (response) {
+                console.log('An error occurred.');
+                console.log(response);
+            },
+        });
+    };
+
+    function clickPutAdd(id){
+        var datajson = {
+            "type": parseInt(document.getElementById('typeIncome').value),
+            "date": document.getElementById('dateid').value,
+            "amount": document.getElementById('sumid').value,
+            "comment": document.getElementById('commentid').value
+        };
+        console.log(datajson);
+        $.ajax({
+            type: "PUT",
+            url: httpBaseUrl + "/api/Income/"+id+"/",
+            data: JSON.stringify(datajson),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                console.log('Submission was successful.');
+                console.log(data);
+                window.location.reload();
+            },
+            error: function (data) {
+                console.log('An error occurred.');
+                console.log(data);
+            },
+        });
+    };
+
+    function CloseModal(){
+        modal.style.display = "none";
+        inputAdd.innerHTML = '';
+    };
+
+
+</script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Контейнеры2</title>
+</head>
+<body>
+    <div class="head">
+        <a class="head_left" href="#">Sanrijapan.com</a>
+        <a class="head_right" href="#">Admin</a>
+    </div>
+    <div class="nav" id="nav">
+        <div><img onclick="nav_burger()" class="burger" id="burger" src="../../icons/bars-solid.svg"></div>
+        <a class="nav_item  " href="../common_base/index.html"><img class="nav_item_icon" src="../../icons/database-solid.svg"><span >Общая база</span></a>
+        <a class="nav_item" href="../client/client.html"><img class="nav_item_icon" src="../../icons/user-solid.svg"><span>Клиенты</span></a>
+        <a class="nav_item _active" href="container.html"><img class="nav_item_icon" src="../../icons/crane.svg"><span class="left_active">Контейнеры</span></a>
+        <a class="nav_item" href="../shop/shop.html"><img class="nav_item_icon" src="../../icons/worldwide-shipping.svg"><span>Магазин</span></a>
+        <a class="nav_item" href="../auction/auction.html"><img class="nav_item_icon" src="../../icons/auction.svg"><span>Аукционы</span></a>
+        <a class="nav_item" href="../car/car.html"><img class="nav_item_icon" src="../../icons/car.svg"><span>Машины</span></a>
+        <a class="nav_item" href="../income/income.html"><img class="nav_item_icon" src="../../icons/money-bag-with-dollar-symbol.svg"><span >Доходы</span></a>
+        <a class="nav_item" href="../monthly_payment/monthlyPayment.html"><img class="nav_item_icon" src="../../icons/eje_oplat.svg"><span >Ежемесячные оплаты</span></a>
+        <a class="nav_item" href="#"><img class="nav_item_icon" src="../../icons/icon_n1.svg"><span >Зарплата сотрудников</span></a>
+        <a class="nav_item" href="../employee/employee.html"><img class="nav_item_icon" src="../../icons/icon_n2.svg"><span >Сотрудники</span></a>
+        <a class="nav_item" href="../manager/manager.html"><img class="nav_item_icon" src="../../icons/light-bulb.svg"><span class="">Менеджеры</span></a>
+        <a class="nav_item" href="#"><img class="nav_item_icon" src="../../icons/trend.svg"><span>Статистика</span></a>
+    </div>
+    <br>
+    <div id="main_container" class="main_container">
+            <div class="heard">
+            <div class="heard_left">
+                <a href="#" class="i_span i_span_left">Собирать новый</a>
+            </div>
+            <div class="heard_right">
+                <a href="container.html" class="i_span i_span_active">Контейнеры</a>  
+                <img src="../../icons/angle-right-solid.svg" class="icon_st" alt="">
+                <a href="#" class="i_span i_span">Собирать новый</a>  
+            </div>
+        </div>
+        <div class="main">
+            <div class="cont main_bay main">
+                    <form>
+                        <label>Клиент</label>
+                        <select class="form-control" id='client'>
+                            <option selected>-------------------------</option>
+                        </select>
+                        <label for="name">Название контейнера</label>
+                        <input type="text" id="name" placeholder="название контейнера" class="form-control">
+                        <label for="data">Дата отправки</label>
+                        <input type="date" placeholder="дата отправки" id="dateOfSending" class="form-control">
+                        <label for="kom">Комиссия</label>
+                        <input type="number" placeholder="комиссия" id="commission" class="form-control">
+                        <label for="perevoska">Перевозка контейнера</label>
+                        <input type="text" placeholder="перевозка контейнера" id="containerTransportation" class="form-control">
+                        <label for="upakov">Упаковочные мат.</label>
+                        <input type="text" placeholder="уапковочные мат." id="packagingМaterials" class="form-control">
+                        <label for="transport">Транспортировка</label>
+                        <input type="text" placeholder="транспортировка" id="transportation" class="form-control">
+                        <label for="pogruz">Погрузка</label>
+                        <input type="text" placeholder="погрузка" id="loading" class="form-control"><hr>
+
+                        <label>Утилизация колес: </label><br><br>
+
+                        <label class="ml-5" for="utilCount" style="display: inline-block;">Количество: </label>
+                        <input type="number" id="utilCount" class="form-control ml-2 mr-5" style="width: 20%; display: inline-block;">
+                        <label class="ml-5" for="utilSum" style="display: inline-block;">Сумма: </label>
+                        <input type="number" id="utilSum" class="form-control ml-2" style="width: 20%; display: inline-block;">
+
+                        <hr>
+
+                        <label >Продажа колес: </label><br><br>
+
+                        <label class="ml-5" for="sellCount" style="display: inline-block;">Количество: </label>
+                        <input type="number" id="sellCount" class="form-control ml-2 mr-5" style="width: 20%; display: inline-block;">
+                        <label class="ml-5" for="sellSum" style="display: inline-block;">Сумма: </label>
+                        <input type="number"  id="sellSum" class="form-control ml-2" style="width: 20%; display: inline-block;">
+
+                        <hr>
+
+                        <label >Статус</label><br>
+
+                            <input id="status1" class="parking" name="status" type="radio" value="going_to">
+                            <label class="radio_button m-1" for="status1">Собирается</label>
+                            <input id="status2" class="parking" name="status" type="radio" value="">
+                            <label class="radio_button m-1" for="status2">Отправлено</label><br><br>
+
+                        <label for="summa">Итоговая сумма</label>
+                        <input type="number" placeholder="итоговая сумма" id="totalAmount" class="form-control">
+                        <br>
+                        <div class="btn_right">
+                            <input type="submit" id="clickPostAdd" value="Сохранить" class="btn btn-success mb-4 ">
+                            <input type="submit" value="Отмена" class="btn btn-secondary ml-3 mb-4">
+                        </div><br>
+                    </form><br><br>
+                </div>
+            <div class="main_content">
+                <br>
+                <form>
+                    <input class="input_search" type="text">
+                    <input class="btn btn-primary input_search_button" value="Поиск" type="submit">
+                    <div class="search_check_group">
+                        <div class="search_check_group_item">
+                            <input class="search_check" id="checkbox1" type="checkbox">
+                            <label class="search_check_label" for="checkbox1">Клиент</label>
+                        </div>
+                        <div class="search_check_group_item">
+                            <input class="search_check" id="checkbox2" type="checkbox">
+                            <label class="search_check_label" for="checkbox2">Марка</label>
+                        </div>
+                        <div class="search_check_group_item">
+                            <input class="search_check" id="checkbox3" type="checkbox">
+                            <label class="search_check_label" for="checkbox3">Номер кузова</label>
+                        </div>
+                        <div class="search_check_group_item">
+                            <input class="search_check" id="checkbox4" type="checkbox">
+                            <label class="search_check_label" for="checkbox4">Номер лота</label>
+                        </div>
+                    </div>
+                </form>
+                   
+                <div class="scroll">
+                    <table class="table  table-hover">
+                         <p class="ml-5">Всего машин (5) На стоянке (3) Собрано (2)</p>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Дата</th>
+                                <th>Марка</th>
+                                <th>Номер лота</th>
+                                <th>Аукцион</th>
+                                <th>Номер кузова</th>
+                                <th>Price</th>
+                                <th>10% of price</th>
+                                <th>(Раксатсу) Auction fees</th>
+                                <th>(Утилизация) Recycle </th>
+                                <th>(Риксо) Transport</th>
+                                <th>Total</th>
+                                <th>+Amount</th>
+                                <th>FOB</th>
+                                <th>Total of FOB </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="align-middle">1</td>
+                                <td class="align-middle">08.03.21</td>
+                                <td class="align-middle">T. VITZ</td>
+                                <td class="align-middle">12315</td>
+                                <td class="align-middle">Gu wffi</td>
+                                <td class="align-middle">JFShfuasHFiffwi</td>
+                                <td class="align-middle">4240000</td>
+                                <td class="align-middle">63000</td>
+                                <td class="align-middle">1200000</td>
+                                <td class="align-middle">2390000</td>
+                                <td class="align-middle">8000000</td>
+                                <td class="align-middle">4240000</td>
+                                <td class="align-middle">63000</td>
+                                <td class="align-middle">1200000</td>
+                                <td class="align-middle">2390000</td>
+                                <td><input class="check" id="checkbox" type="checkbox"></td>
+                            </tr>
+                            <tr>
+                                <td class="align-middle">1</td>
+                                <td class="align-middle">08.03.21</td>
+                                <td class="align-middle">T. VITZ</td>
+                                <td class="align-middle">12315</td>
+                                <td class="align-middle">Gu wffi</td>
+                                <td class="align-middle">JFShfuasHFiffwi</td>
+                                <td class="align-middle">4240000</td>
+                                <td class="align-middle">63000</td>
+                                <td class="align-middle">1200000</td>
+                                <td class="align-middle">2390000</td>
+                                <td class="align-middle">8000000</td>
+                                <td class="align-middle">4240000</td>
+                                <td class="align-middle">63000</td>
+                                <td class="align-middle">1200000</td>
+                                <td class="align-middle">2390000</td>
+                                <td><input class="check" id="checkbox" type="checkbox"></td>
+                            </tr>   
+                        </tbody>
+                    </table>
+                </div><br>
+            </div><br>
+
+        </div>
+    </div>
+<script src="../../js/index.js"></script>
+<script src="../../js/url.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+
+        $('#clickPostAdd').click(function (e) {
+            e.preventDefault();
+            var datajson = {
+                "client": parseInt(document.getElementById('client').value),
+                "name": document.getElementById('name').value,
+                "dateOfSending": document.getElementById('dateOfSending').value,
+                "commission": parseInt(document.getElementById('commission').value),
+                "containerTransportation": parseInt(document.getElementById('containerTransportation').value),
+                "packagingMaterials": parseInt(document.getElementById('packagingМaterials').value),
+                "transportation": parseInt(document.getElementById('transportation').value),
+                "loading": parseInt(document.getElementById('loading').value),
+                "wheelRecycling": {
+                    "count": parseInt(document.getElementById('utilCount').value),
+                    "sum":  parseInt(document.getElementById('utilSum').value)
+                },
+                "wheelSales": {
+                    "count": parseInt(document.getElementById('sellCount').value),
+                    "sum":  parseInt(document.getElementById('sellSum').value)
+                },
+                "status": document.querySelector('input[name="status"]:checked').value,
+                "totalAmount": parseInt(document.getElementById('totalAmount').value)
+            };
+            console.log(datajson);
+            $.ajax({
+                type: "POST",
+                url: httpBaseUrl + "/api/Container/",
+                data: JSON.stringify(datajson),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    console.log('Submission was successful.');
+                    console.log(data);
+                    window.location.href = 'container.html';
+                },
+                error: function (data) {
+                    console.log('An error occurred.');
+                    console.log(data);
+                },
+            });
+        });
+
+        var clientList = document.getElementById('client');
+        $.ajax({
+            type: "GET",
+            url: httpBaseUrl + "/api/Client",
+            success: function (response) {
+                console.log('Submission was successful.');
+                response.forEach(element => {
+                    clientList.innerHTML +=
+                    '<option value="'+element.id+'">'+element.fullName+'</option>'
+                    }); 
+                console.log(response);
+            },
+            error: function (response) {
+                console.log('An error occurred.');
+                console.log(response);
+            },
+        });
+
+    </script>
+</body>
+</html>

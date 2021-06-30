@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Сотрудники2</title>
+</head>
+<body>
+    <div class="head">
+        <a class="head_left" href="#">Sanrijapan.com</a>
+        <a class="head_right" href="#">Admin</a>
+    </div>
+    <div class="nav" id="nav">
+        <div><img onclick="nav_burger()" class="burger" id="burger" src="../../icons/bars-solid.svg"></div>
+        <a class="nav_item " href="../common_base/index.html"><img class="nav_item_icon" src="../../icons/database-solid.svg"><span >Общая база</span></a>
+        <a class="nav_item" href="../client/client.html"><img class="nav_item_icon" src="../../icons/user-solid.svg"><span>Клиенты</span></a>
+        <a class="nav_item" href="../container/container.html"><img class="nav_item_icon" src="../../icons/crane.svg"><span>Контейнеры</span></a>
+        <a class="nav_item" href="../shop/shop.html"><img class="nav_item_icon" src="../../icons/worldwide-shipping.svg"><span>Магазин</span></a>
+        <a class="nav_item" href="../auction/auction.html"><img class="nav_item_icon" src="../../icons/auction.svg"><span>Аукционы</span></a>
+        <a class="nav_item" href="../car/car.html"><img class="nav_item_icon" src="../../icons/car.svg"><span>Машины</span></a>
+        <a class="nav_item" href="../income/income.html"><img class="nav_item_icon" src="../../icons/money-bag-with-dollar-symbol.svg"><span >Доходы</span></a>
+        <a class="nav_item" href="../monthly_payment/monthlyPayment.html"><img class="nav_item_icon" src="../../icons/eje_oplat.svg"><span >Ежемесячные оплаты</span></a>
+        <a class="nav_item" href="#"><img class="nav_item_icon" src="../../icons/icon_n1.svg"><span >Зарплата сотрудников</span></a>
+        <a class="nav_item  _active" href="employee.html"><img class="nav_item_icon" src="../../icons/icon_n2.svg"><span class="left_active">Сотрудники</span></a>
+        <a class="nav_item" href="../manager/manager.html"><img class="nav_item_icon" src="../../icons/light-bulb.svg"><span class="">Менеджеры</span></a>
+        <a class="nav_item" href="#"><img class="nav_item_icon" src="../../icons/trend.svg"><span>Статистика</span></a>
+    </div>
+    <br>
+    <div id="main_container" class="main_container">
+        <div class="heard">
+            <div class="heard_left">
+                <a href="#" class="i_span i_span_left left_active">Добавить сумму</a>
+            </div>
+            <div class="heard_right">
+                <a href="employee.html" class="i_span i_span_active">Сотрудники</a>  
+                <img src="../../icons/angle-right-solid.svg" class="icon_st" alt="">
+                <a href="#" class="i_span ">Добавить сумму</a>   
+            </div>
+        </div>
+        <div class="main main_bay">
+            <br>
+            <form>
+                <label for="sot">Сотрудники</label>
+                <select class="form-control" id='staffName'>
+                    <option selected>-------------------------</option>
+                </select>
+                <label for="tip">Тип оплаты</label>
+                <select class="form-control" id='typeName'>
+                    <option selected>-------------------------</option>
+                </select>
+                <label for="date">Дата</label>
+                <input type="date" placeholder="дата" id="date" class="form-control">
+                <label for="num">Сумма</label>
+                <input type="number" placeholder="сумма" id="num" class="form-control">
+                <label for="kom">Комментарий</label>
+                <input type="text" placeholder="комментарий" id="kom" class="form-control">
+                <br>
+                <div class="btn_right">
+                    <input type="button" value="Сохранить" id="clickPostAdd" class="btn btn-success mb-4 ">
+                    <input type="submit" value="Отмена" class="btn btn-secondary ml-3 mb-4">
+                </div>
+            </form>
+            <br><br><br>
+            
+        </div><br>
+    </div>
+    <script src="../../js/index.js"></script>
+    <script src="../../js/url.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        var typeStaff = document.getElementById('staffName');
+        $.ajax({
+            type: "GET",
+            url: httpBaseUrl + "/api/Staff/Members",
+            success: function (response) {
+                console.log('Submission was successful.');
+                response.forEach(element => {
+                    typeStaff.innerHTML +=
+                    '<option value="'+element.id+'">'+element.full_name+'</option>'
+                    }); 
+            },
+            error: function (response) {
+                console.log('An error occurred.');
+                console.log(response);
+            },
+        });
+
+        var typePay = document.getElementById('typeName');
+        $.ajax({
+            type: "GET",
+            url: httpBaseUrl + "/api/MonthlyPayment/Type",
+            success: function (response) {
+                console.log('Submission was successful.');
+                response.forEach(element => {
+                    typePay.innerHTML +=
+                    '<option value="'+element.id+'">'+element.name+'</option>'
+                    }); 
+            },
+            error: function (response) {
+                console.log('An error occurred.');
+                console.log(response);
+            },
+        });
+
+        $('#clickPostAdd').click(function (e) {
+            e.preventDefault();
+            var listStaff = [];
+            listStaff.push(parseInt(document.getElementById('staffName').value));
+            var datajson = {
+                "staff_members": listStaff,
+                "type": parseInt(document.getElementById('typeName').value),
+                "date":  document.getElementById('date').value,
+                "amount":  document.getElementById('num').value,
+                "comment":  document.getElementById('kom').value
+            };
+            $.ajax({
+                type: "POST",
+                url: httpBaseUrl + "/api/Staff/Expenses/",
+                data: JSON.stringify(datajson),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    console.log('Submission was successful.');
+                    console.log(data);
+                    window.location.href = "employee.html";
+                },
+                error: function (data) {
+                    console.log('An error occurred.');
+                    console.log(data);
+                },
+            });
+        });
+    </script>
+</body>
+</html>
