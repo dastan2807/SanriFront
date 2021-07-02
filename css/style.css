@@ -583,14 +583,12 @@ body {
     width: 100%;
 }
 .shop_item {
-    width: 30%;
-    padding: 0px;
-    background-color: rgb(209, 209, 209);
-    margin: 15px 1.5%;
-    display: inline-block;
+    border: 1px solid black;
 }
 .shop_item img {
-    width: 90%;
-    margin: 10px 5%;
-    height: 230px;
+    
+}
+.pred_in_car {
+    width: 20px;
+    height: 20px;
 }

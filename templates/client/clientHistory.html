@@ -36,7 +36,7 @@
             </div>
             <div class="heard_right">
                 <a href="client.html" class="i_span i_span_active">Клиенты</a>  
-                <img src="icons/angle-right-solid.svg" class="icon_st" alt="">
+                <img src="../../icons/angle-right-solid.svg" class="icon_st" alt="">
                 <a href="#" class="i_span ">История баланса</a>          
             </div>
         </div>
@@ -52,8 +52,9 @@
                 <table class="table  table-hover">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Имя клиента</th>
+                            <th>№</th>
+                            <th>Клиент</th>
+                            <th>Имя</th>
                             <th>Дата</th>
                             <th>Пополнение /Сумма в JPY</th>
                             <th>Снятие /Сумма в JPY</th>
@@ -63,46 +64,49 @@
                             <th>Комментарий</th>
                         </tr>
                     </thead>
-                    <tbody>
-                       <tr>
-                            <td class="align-middle">1</td>
-                            <td class="align-middle"></td>
-                            <td class="align-middle"></td>
-                            <td class="align-middle"></td>
-                            <td class="align-middle"></td>
-                            <td class="align-middle"></td>
-                            <td class="align-middle"></td>
-                            <td class="align-middle"></td>
-                            <td class="align-middle"></td>
-                        </tr>
-                        <tr>
-                            <td class="align-middle">2</td>
-                            <td class="align-middle"></td>
-                            <td class="align-middle"></td>
-                            <td class="align-middle"></td>
-                            <td class="align-middle"></td>
-                            <td class="align-middle"></td>
-                            <td class="align-middle"></td>
-                            <td class="align-middle"></td>
-                            <td class="align-middle"></td>
-                        </tr>
-                        <tr>
-                            <td class="align-middle">3</td>
-                            <td class="align-middle"></td>
-                            <td class="align-middle"></td>
-                            <td class="align-middle"></td>
-                            <td class="align-middle"></td>
-                            <td class="align-middle"></td>
-                            <td class="align-middle"></td>
-                            <td class="align-middle"></td>
-                            <td class="align-middle"></td>
-                        </tr>
-                    </tbody>
+                    <tbody id="addTable"></tbody>
                 </table><br>
             </div>
         </div>
     </div>
 </div>
     <script src="../../js/index.js"></script>
+    <script src="../../js/url.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        addTable = document.getElementById('addTable');
+        var modal = document.getElementById("add_modal");
+        var inputAdd = document.getElementById("addInput");
+
+        $.ajax({
+            type: "GET",
+            data: {},
+            url: httpBaseUrl + "/api/Balance/",
+            success: function (response) {
+                response.forEach(function(element, index){
+                    addTable.innerHTML +=
+                        '<tr>'+
+                            '<td class="align-middle">'+(index+1)+'</td>'+
+                            '<td class="align-middle">'+element.client+'</td>'+
+                            '<td class="align-middle">'+element.name+'</td>'+
+                            '<td class="align-middle">'+element.date+'</td>'+
+                            '<td class="align-middle">'+element.sum_in_jpy+'</td>'+
+                            '<td class="align-middle">'+element.rate+'</td>'+
+                            '<td class="align-middle">'+element.sum_in_usa+'</td>'+
+                            '<td class="align-middle">'+element.payment_type+'</td>'+
+                            '<td class="align-middle">'+element.sender_name+'</td>'+
+                            '<td class="align-middle">'+element.comment+'</td>'+
+                        '</tr>';
+                    });
+            },
+            error: function (data) {
+                console.log('An error occurred.');
+                console.log(data);
+            },
+        });
+
+        
+
+    </script>
 </body>
 </html>

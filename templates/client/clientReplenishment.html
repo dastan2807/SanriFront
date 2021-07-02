@@ -36,36 +36,38 @@
             </div>
             <div class="heard_right">
                 <a href="client.html" class="i_span i_span_active">Клиенты</a>  
-                <img src="icons/angle-right-solid.svg" class="icon_st" alt="">
+                <img src="../../icons/angle-right-solid.svg" class="icon_st" alt="">
                 <a href="#" class="i_span i_span">Пополнения / снятие</a>
             </div>
         </div>
         <div class="main main_bay">
             <br>
             <form>
+                <label for="client">Клиент</label>
+                <select class="form-control" id='client'>
+                    <option selected>-------------------------</option>
+                </select>
                 <label for="name">Имя</label>
                 <input type="text" placeholder="имя" id="name" class="form-control">
-                <label for="strana">Дата</label>
+                <label for="date">Дата</label>
                 <input type="date" placeholder="дата" id="date" class="form-control">
-                <label for="number">Сумма в JPY</label>
-                <input type="number" placeholder="сумма в jpy" id="number" class="form-control">
-                <label for="num">Сумма в USA</label>
-                <input type="number" placeholder="сумма в usa" id="num" class="form-control">
-                <label for="kurs">Курс</label><br>
-                <input type="text" placeholder="курс" id="kurs" class="form-control">
-                <label>Способ перевода</label><br>
-                    <input type="button" value="Без наличный" class="btn btn-outline-primary bay_3_btn">
-                    <input type="button" value="Наличный" class="btn btn-outline-primary bay_3_btn"><br>
-                <label for="name_o">Имя отправителя</label>
-                <input type="text" placeholder="имя отправителя" id="name_o" class="form-control">
-                <label for="kom">Комментарий</label>
-                <input type="text" placeholder="комментарий" id="kom" class="form-control">
-                
-                <input type="button"  value="Пополнение" class="btn btn-outline-primary bay_3_btn">
-                <input type="button"  value="Снятие со счета" class="btn btn-outline-primary bay_3_btn">
+                <label for="numberJpy">Сумма в JPY</label>
+                <input type="number" placeholder="сумма в jpy" id="numberJpy" class="form-control">
+                <label for="numberUsa">Сумма в USA</label>
+                <input type="number" placeholder="сумма в usa" id="numberUsa" class="form-control">
+                <label for="course">Курс</label><br>
+                <input type="text" placeholder="курс" id="course" class="form-control">
+                <label for="rate">Пополнение /Сумма в JPY</label><br>
+                <input type="number" placeholder="пополнение /сумма в JPY" id="rate" class="form-control">
+                <label for="sendName">Имя отправителя</label>
+                <input type="text" placeholder="имя отправителя" id="sendName" class="form-control">
+                <label for="comment">Комментарий</label>
+                <input type="text" placeholder="комментарий" id="comment" class="form-control">
+                <label for="balanceAuction">Балансовый аукцион</label>
+                <input type="text" placeholder="балансовый аукцион" id="balanceAuction" class="form-control">
                 <br><br>
                 <div class="btn_right">
-                <input type="submit" value="Сохранить" class="btn btn-success mb-4 ">
+                <input type="button" id="clickPostAdd" value="Сохранить" class="btn btn-success mb-4">
                 <input type="submit" value="Отмена" class="btn btn-secondary ml-3 mb-4">
                 </div>
                 <br><br><br>
@@ -73,5 +75,59 @@
         </div>
     </div>
     <script src="../../js/index.js"></script>
+    <script src="../../js/url.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        var typePayList = document.getElementById('client');
+        $.ajax({
+            type: "GET",
+            url: httpBaseUrl + "/api/Client",
+            success: function (response) {
+                console.log('Submission was successful.');
+                response.forEach(element => {
+                    typePayList.innerHTML +=
+                    '<option value="'+element.id+'">'+element.fullName+'</option>'
+                    }); 
+                console.log(response);
+            },
+            error: function (response) {
+                console.log('An error occurred.');
+                console.log(response);
+            },
+        });
+
+        $('#clickPostAdd').click(function (e) {
+            e.preventDefault();
+            var datajson = {
+                "client": parseInt(document.getElementById('client').value),
+                "name":  document.getElementById('name').value,
+                "date":  document.getElementById('date').value,
+                "sum_in_jpy": parseInt(document.getElementById('numberJpy').value),
+                "sum_in_usa": parseInt(document.getElementById('numberUsa').value),
+                "rate": parseInt(document.getElementById('rate').value),
+                "payment_type":  document.getElementById('course').value,
+                "sender_name":  document.getElementById('sendName').value,
+                "comment":  document.getElementById('comment').value,
+                "balance_action":  document.getElementById('balanceAuction').value
+            };
+            console.log(datajson);
+            $.ajax({
+                type: "POST",
+                url: httpBaseUrl + "/api/Balance/",
+                data: JSON.stringify(datajson),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    console.log('Submission was successful.');
+                    console.log(data);
+                    window.location.href = "clientHistory.html";
+                },
+                error: function (data) {
+                    console.log('An error occurred.');
+                    console.log(data);
+                },
+            }); 
+        });
+    </script>
 </body>
 </html>

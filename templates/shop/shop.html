@@ -33,28 +33,7 @@
         <br>
         <div class="main">
             <button class="btn btn-primary ml-5 mt-3 mb-3" id='append_shop'>Добавить</button>
-            <div class="shop_img">
-                <div class="shop_item">
-                    <img src="../../img/download.jpeg" alt="">
-                    <button class="btn btn-success ml-4 mb-3 mt-2">Редактировать</button>
-                    <button class="btn btn-danger float-right mr-4 mb-3 mt-2">Удалить</button>
-                </div>
-                <div class="shop_item">
-                    <img src="../../img/download.jpeg" alt="">
-                    <button class="btn btn-success ml-4 mb-3 mt-2">Редактировать</button>
-                    <button class="btn btn-danger float-right mr-4 mb-3 mt-2">Удалить</button>
-                </div>
-                <div class="shop_item">
-                    <img src="../../img/download.jpeg" alt="">
-                    <button class="btn btn-success ml-4 mb-3 mt-2">Редактировать</button>
-                    <button class="btn btn-danger float-right mr-4 mb-3 mt-2">Удалить</button>
-                </div>
-                <div class="shop_item">
-                    <img src="../../img/download.jpeg" alt="">
-                    <button class="btn btn-success ml-4 mb-3 mt-2">Редактировать</button>
-                    <button class="btn btn-danger float-right mr-4 mb-3 mt-2">Удалить</button>
-                </div>
-            </div>
+            <div class="row shop_img" id="addCar"></div>
         </div>
     </div>
 
@@ -105,7 +84,7 @@
 <script src="../../js/url.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script>
-        addTable = document.getElementById('addTable');
+        var addCar = document.getElementById('addCar');
 
         var modal = document.getElementById("add_modal");
         var modal_append = document.getElementById("add_modal_append");
@@ -125,7 +104,7 @@
             e.preventDefault();
             var arrayImg = [];
             document.getElementsByName('imgForms').forEach(function(el, index){
-                arrayImg.push({"id": index, "name": el.value});
+                arrayImg.push(el.files[0].name);
             });
             var datajson = {
                 "brand":  document.getElementById('brand').value,
@@ -138,7 +117,7 @@
                 "condition":  document.getElementById('condition').value,
                 "price":  document.getElementById('price').value,
                 "status":  document.getElementById('status').value,
-                "imgs":  arrayImg
+                "imgs": arrayImg
             };
             console.log(datajson);
 
@@ -158,50 +137,38 @@
                     console.log(data);
                 },
             });
-            
-            modal_append.style.display = 'none';
         });
 
 
 
 
-        // $.ajax({
-        //     type: "GET",
-        //     data: {},
-        //     url: httpBaseUrl + "/api/CarOrder",
-        //     success: function (response) {
-        //         console.log('Submission was successful.');
-        //         response.forEach(element => {
-        //             addTable.innerHTML +=
-        //                 '<tr>'+
-        //                     '<td class="align-middle">'+element.id+'</td>'+
-        //                     '<td class="align-middle">'+element.createdAt+'</td>'+
-        //                     '<td class="align-middle">'+element.client.fullName+'</td>'+
-        //                     '<td class="align-middle">'+element.carModel+'</td>'+
-        //                     '<td class="align-middle">'+element.lotNumber+'</td>'+
-        //                     '<td class="align-middle">'+element.auction.name+'</td>'+
-        //                     '<td class="align-middle">'+element.vinNumber+'</td>'+
-        //                     '<td class="align-middle">'+element.price+'</td>'+
-        //                     '<td class="align-middle">'+element.price10Percent+'</td>'+
-        //                     '<td class="align-middle">'+element.auctionFees+'</td>'+
-        //                     '<td class="align-middle">'+element.recycle+'</td>'+
-        //                     '<td class="align-middle">'+element.transport+'</td>'+
-        //                     '<td class="align-middle">'+element.total+'</td>'+
-        //                     '<td class="align-middle">'+element.amount+'</td>'+
-        //                     '<td class="align-middle">'+element.fob+'</td>'+
-        //                     '<td class="align-middle">'+element.total_FOB+'</td>'+
-        //                     '<td>'+
-        //                         '<button onclick="UpdateGet('+element.id+')" class="btn btn-success ml-3 mr-3 mt-1 mb-1 align-middle">Изменить</button>'+
-        //                         '<button onclick="DeleteCar('+element.id+')" class="btn btn-primary ml-3 mr-3 mt-1 mb-1 align-middle">Препродать</button>'+
-        //                     '</td>'+
-        //                 '</tr>';
-        //             }); 
-        //     },
-        //     error: function (data) {
-        //         console.log('An error occurred.');
-        //         console.log(data);
-        //     },
-        // });
+        $.ajax({
+            type: "GET",
+            data: {},
+            url: httpBaseUrl + "/api/CarStore",
+            success: function (response) {
+                console.log('Submission was successful.');
+                response.forEach(element => {
+                    addCar.innerHTML +=
+                        '<div class="shop_item col-md-3">'+
+                            '<div id="'+'id'+element.id+'">'+
+                                '<img src="../../img/download.jpeg" alt="" />'+
+                                '<img class="pred_in_car" src="../../icons/pred.png" >'+
+                            '</div>'+
+                            '<button class="btn btn-success ml-4 mb-3 mt-2">Редактировать</button>'+
+                            '<button class="btn btn-danger float-right mr-4 mb-3 mt-2">Удалить</button>'+
+                        '</div>';
+                        var imgAdd = document.getElementById('id'+element.id);
+                        element.images.forEach(function(el){
+                            imgAdd.innerHTML += '';
+                        });
+                    }); 
+            },
+            error: function (data) {
+                console.log('An error occurred.');
+                console.log(data);
+            },
+        });
 
         // function UpdateGet(id){
         //     modal.style.display = 'block';

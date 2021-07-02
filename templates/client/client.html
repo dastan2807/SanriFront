@@ -103,72 +103,148 @@
         var modal = document.getElementById("add_modal");
         var inputAdd = document.getElementById("addInput");
 
-        // $.ajax({
-        //     type: "GET",
-        //     data: {},
-        //     url: httpBaseUrl + "/api/Client",
-        //     success: function (response) {
-        //         response.forEach(element => {
-        //             addTable.innerHTML +=
-        //                 '<tr>'+
-        //                     '<td class="align-middle">'+element.fullName+'</td>'+
-        //                     '<td class="align-middle">'+element.id+'</td>'+
-        //                     '<td class="align-middle">'+element.fullName+'</td>'+
-        //                     '<td class="align-middle">'+element.fullName+'</td>'+
-        //                     '<td class="align-middle">'+element.fullName+'</td>'+
-        //                     '<td class="align-middle">'+element.fullName+'</td>'+
-        //                     '<td class="align-middle">'+element.fullName+'</td>'+
-        //                     '<td>'+
-        //                         '<button onclick="UpdateGet('+element.id+')" class="btn btn-primary ml-3 mr-3 mt-1 mb-1 align-middle">Редактировать</button>'+
-        //                         '<button onclick="DeleteClient('+element.id+')" class="btn btn-danger ml-3 mr-3 mt-1 mb-1 align-middle">Удалить</button>'+
-        //                     '</td>'+
-        //                 '</tr>';
-        //             });
-        //     },
-        //     error: function (data) {
-        //         console.log('An error occurred.');
-        //         console.log(data);
-        //     },
-        // });
+        $.ajax({
+            type: "GET",
+            data: {},
+            url: httpBaseUrl + "/api/Client",
+            success: function (response) {
+                response.forEach(element => {
+                    addTable.innerHTML +=
+                        '<tr>'+
+                            '<td class="align-middle">'+element.fullName+'</td>'+
+                            '<td class="align-middle">'+element.shipped_containers.number+'/'+element.shipped_containers.totalAmount+'</td>'+
+                            '<td class="align-middle">'+element.going_to_containers.number+'/'+element.going_to_containers.totalAmount+'</td>'+
+                            '<td class="align-middle">'+element.cars_for_sale.number+'/'+element.cars_for_sale.totalAmount+'</td>'+
+                            '<td class="align-middle">'+element.balance_replenishments.number+'/('+element.balance_replenishments.totalAmount.jpy+'/'+element.balance_replenishments.totalAmount.usa+')</td>'+
+                            '<td class="align-middle">'+element.balance_withdrawals.number+'/('+element.balance_withdrawals.totalAmount.jpy+'/'+element.balance_withdrawals.totalAmount.usa+')</td>'+
+                            '<td class="align-middle">'+0+'</td>'+
+                            // '<td>'+
+                            //     '<button onclick="UpdateGet('+element.id+')" class="btn btn-primary ml-3 mr-3 mt-1 mb-1 align-middle">Редактировать</button>'+
+                            //     '<button onclick="DeleteClient('+element.id+')" class="btn btn-danger ml-3 mr-3 mt-1 mb-1 align-middle">Удалить</button>'+
+                            // '</td>'+
+                        '</tr>';
+                    });
+            },
+            error: function (data) {
+                console.log('An error occurred.');
+                console.log(data);
+            },
+        });
 
-        function DeleteClient(id) {
-            $.ajax({
-                type: "DELETE",
-                url: httpBaseUrl + "/api/Client/"+id,
-                success: function (data) {
-                    console.log('Submission was successful.');
-                    console.log(data);
-                    window.location.reload();
-                },
-                error: function (data) {
-                    console.log('An error occurred.');
-                    console.log(data);
-                },
-            });
-        };
+        // function UpdateGet(id){
+        //     modal.style.display = 'block';
+        //     $.ajax({
+        //         type: "GET",
+        //         url: httpBaseUrl + "/api/Client/"+id,
+        //         success: function (response) {
+        //             console.log('Submission was successful.');
+        //             inputAdd.innerHTML += 
+        //                 '<label>Имя клиента: </label>'+
+        //                 '<input id="nameClient" class="form-control" value="'+response.fullName+'" type="text">'+
+        //                 '<label>Отправленные контейнеры: </label>'+
+        //                 '<div class="row">'+
+        //                     '<div class="col-5 ml-5">'+
+        //                         '<label>Кол.конт.: </label>'+
+        //                         '<input id="nameClient" class="form-control" value="'+response.shipped_containers.number+'" type="number">'+
+        //                     '</div>'+
+        //                     '<div class="col-5">'+
+        //                         '<label>Сумма: </label>'+
+        //                         '<input id="sumid" class="form-control" value="'+response.shipped_containers.totalAmount+'" type="number">'+
+        //                     '</div>'+
+        //                 '</div>'+
+        //                 '<label>Собирающийся контейнер: </label>'+
+        //                 '<div class="row">'+
+        //                     '<div class="col-5 ml-5">'+
+        //                         '<label>Кол.конт.: </label>'+
+        //                         '<input id="nameClient" class="form-control" value="'+response.going_to_containers.number+'" type="number">'+
+        //                     '</div>'+
+        //                     '<div class="col-5">'+
+        //                         '<label>Сумма: </label>'+
+        //                         '<input id="sumid" class="form-control" value="'+response.going_to_containers.totalAmount+'" type="number">'+
+        //                     '</div>'+
+        //                 '</div>'+
+        //                 '<label>Машины из стоянках: </label>'+
+        //                 '<div class="row">'+
+        //                     '<div class="col-5 ml-5">'+
+        //                         '<label>Кол. маш.: </label>'+
+        //                         '<input id="nameClient" class="form-control" value="'+response.cars_for_sale.number+'" type="number">'+
+        //                     '</div>'+
+        //                     '<div class="col-5">'+
+        //                         '<label>Сумма: </label>'+
+        //                         '<input id="sumid" class="form-control" value="'+response.cars_for_sale.totalAmount+'" type="number">'+
+        //                     '</div>'+
+        //                 '</div>'+
+        //                 '<label>Пополнение баланса: </label>'+
+        //                 '<div class="row">'+
+        //                     '<div class="col-4 ml-5">'+
+        //                         '<label>Кол. пополнений: </label>'+
+        //                         '<input id="nameClient" class="form-control" value="'+response.balance_replenishments.number+'" type="number">'+
+        //                     '</div>'+
+        //                     '<div class="col-3">'+
+        //                         '<label>Сумма(jpy): </label>'+
+        //                         '<input id="sumid" class="form-control" value="'+response.balance_replenishments.totalAmount.jpy+'" type="number">'+
+        //                     '</div>'+
+        //                     '<div class="col-3">'+
+        //                         '<label>Сумма(usa): </label>'+
+        //                         '<input id="sumid" class="form-control" value="'+response.balance_replenishments.totalAmount.usa+'" type="number">'+
+        //                     '</div>'+
+        //                 '</div>'+
+        //                 '<label>Снятие из баланса: </label>'+
+        //                 '<div class="row">'+
+        //                     '<div class="col-4 ml-5">'+
+        //                         '<label>Кол. снятий: </label>'+
+        //                         '<input id="nameClient" class="form-control" value="'+response.balance_withdrawals.number+'" type="number">'+
+        //                     '</div>'+
+        //                     '<div class="col-3">'+
+        //                         '<label>Сумма(jpy): </label>'+
+        //                         '<input id="sumid" class="form-control" value="'+response.balance_withdrawals.totalAmount.jpy+'" type="number">'+
+        //                     '</div>'+
+        //                     '<div class="col-3">'+
+        //                         '<label>Сумма(usa): </label>'+
+        //                         '<input id="sumid" class="form-control" value="'+response.balance_withdrawals.totalAmount.usa+'" type="number">'+
+        //                     '</div>'+
+        //                 '</div>'+
+                        
+        //                 '<button type="button" onclick="clickPutAdd('+response.id+')" class="btn btn-primary m-4 float-right">Обновить</button>'
+        //             console.log(response);
+        //         },
+        //         error: function (response) {
+        //             console.log('An error occurred.');
+        //             console.log(response);
+        //         },
+        //     });
+        // };
 
-        function UpdateGet(id){
-            modal.style.display = 'block';
-            $.ajax({
-                type: "GET",
-                url: httpBaseUrl + "/api/Client/"+id,
-                success: function (response) {
-                    console.log('Submission was successful.');
-                    inputAdd.innerHTML += '<label>Название:</label><input id="addText" class="form-control" value="'+response.fullName+'" type="text">'+
-                    '<button onclick="clickPutAdd('+response.id+')" class="btn btn-primary m-4 float-right">Добавить</button>'
-                    console.log(response);
-                },
-                error: function (response) {
-                    console.log('An error occurred.');
-                    console.log(response);
-                },
-            });
-        };
+        // function clickPutAdd(id){
+        //     var datajson = {
+        //         "type": parseInt(document.getElementById('typeIncome').value),
+        //         "date": document.getElementById('dateid').value,
+        //         "amount": document.getElementById('sumid').value,
+        //         "comment": document.getElementById('commentid').value
+        //     };
+        //     console.log(datajson);
+        //     $.ajax({
+        //         type: "PUT",
+        //         url: httpBaseUrl + "/api/Income/"+id+"/",
+        //         data: JSON.stringify(datajson),
+        //         contentType: "application/json; charset=utf-8",
+        //         dataType: "json",
+        //         success: function (data) {
+        //             console.log('Submission was successful.');
+        //             console.log(data);
+        //             window.location.reload();
+        //         },
+        //         error: function (data) {
+        //             console.log('An error occurred.');
+        //             console.log(data);
+        //         },
+        //     });
+        // };
 
-        function CloseModal(){
-            modal.style.display = "none";
-            inputAdd.innerHTML = '';
-        }
+        // function CloseModal(){
+        //     modal.style.display = "none";
+        //     inputAdd.innerHTML = '';
+        // };
 
     </script>
 </body>
